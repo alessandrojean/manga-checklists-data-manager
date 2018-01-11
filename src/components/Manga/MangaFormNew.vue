@@ -246,6 +246,14 @@
           this.manga = {}
           // Parse manga from database to data.
           this.manga = manga
+          // If have digital edition.
+          if (this.manga.digital_edition) {
+            this.digitalEdition = {}
+            // Parse digital edition.
+            this.digitalEdition = this.manga.digital_edition
+            // Enable digital edition.
+            this.haveDigitalEdition = true
+          }
         } else {
           // Redirect to manga list.
           this.$router.push({ name: 'Manga', params: { dateShort: this.$route.params.dateShort } })
