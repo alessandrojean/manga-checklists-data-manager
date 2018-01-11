@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import Landing from '@/components/Landing'
 import Checklists from '@/components/Checklists'
 import Manga from '@/components/Manga'
 import Export from '@/components/Export'
@@ -13,8 +13,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Landing',
+      component: Landing
     },
     {
       path: '/checklists',
@@ -41,6 +41,10 @@ export default new Router({
           component: ExportSuccess
         }
       ]
+    },
+    {
+      path: '*',
+      redirect: '/'
     }
   ],
   scrollBehavior (to, from, savedPosition) {

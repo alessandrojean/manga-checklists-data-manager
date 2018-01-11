@@ -158,7 +158,7 @@
     name: 'manga-form',
     computed: {
       haveSynopsis () {
-        return this.mangaData.synopsis !== undefined
+        return this.mangaData.synopsis !== ''
       },
       correctDate: {
         get () {

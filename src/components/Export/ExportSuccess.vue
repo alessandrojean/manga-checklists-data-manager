@@ -1,5 +1,5 @@
 <template>
-  <b-card-group class="w-75">
+  <b-card-group class="m-auto w-75">
     <b-card title="Instruções">
       <p class="card-text text-justify">
         Se você optou por ser citado, você terá seu nome incluido

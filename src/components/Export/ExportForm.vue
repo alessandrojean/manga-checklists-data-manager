@@ -1,5 +1,6 @@
 <template>
-  <b-card title="Sobre" class="m-auto d-block w-50">
+  <b-card-group class="m-auto w-75">
+  <b-card title="Sobre">
     <p class="card-text text-justify">
       Todos os checklists criados serão exportados.
     </p>
@@ -8,6 +9,13 @@
       somente os campos diferentes serão avaliados e, caso aplicável,
       alterados.
     </p>
+    <p class="card-text text-justify">
+      Informações disconexas ou duvidosas serão completamente descartadas,
+      portanto, verifique antes se o que você cadastrou é verídico segundo
+      os sites recomendados.
+    </p>
+  </b-card>
+  <b-card title="Informações">
     <b-form @submit="onSubmit" autocomplete="off">
       <b-form-checkbox id="export-citation"  v-model="exportation.citation" class="mb-3">Quero ser citado pela colaboração.</b-form-checkbox>
       <b-collapse id="export-profile" v-model="exportation.citation">
@@ -28,6 +36,7 @@
       <b-button type="submit" variant="primary" class="w-100 mt-3">Exportar</b-button>
     </b-form>
   </b-card>
+  </b-card-group>
 </template>
 
 <script>
