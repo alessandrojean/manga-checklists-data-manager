@@ -87,32 +87,7 @@
               month: this.monthSelected,
               dateFormatted: dateFormatted,
               dateShort: dateShort,
-              mangas: [
-                {
-                  'publisher': {
-                    'code': 2,
-                    'name': 'Panini',
-                    'label': 'Planet Mangá'
-                  },
-                  'name': 'Pluto',
-                  'date': '01/12/2017',
-                  'subtitle': '',
-                  'synopsis': '<p>Em um mundo onde humanos e robôs coexistem, o poderoso robô Mont Blanc foi destruído. Ao mesmo tempo, um importante ativista protetor dos direitos dos robôs é assassinado. Os dois incidentes apresentam algo em comum nos locais dos crimes: chifres colocados nas cabeças das vítimas. Gesicht, um competente investigador da Europol, está prestes a enfrentar o mais tenso e complexo trabalho de sua carreira, no qual ele também é uma vítima em potencial: um dos robôs mais poderosos do mundo!</p>',
-                  'volume': 1,
-                  'authors': 'Naoki Urasawa, Osamu Tezuka',
-                  'page_number': 200,
-                  'age_rating': '18 anos',
-                  'paper_edition': {
-                    'format': '13,7 x 20 cm',
-                    'price': 18.9,
-                    'isbn': '9788542608793'
-                  },
-                  'cover_url': 'https://img.assinaja.com/assets/tZ/004/img/82987_520x520.jpg',
-                  'header_url': 'https://img.assinaja.com/assets/tZ/004/img/82987_520x520.jpg',
-                  'url': 'https://loja.panini.com.br/panini/produto/Manga-Pluto-Edicao-1.aspx',
-                  'id': 'ryhEvH-NM'
-                }
-              ],
+              mangas: [],
               updated_at: checklistHelper.getActualDateForUpdatedAt()
             })
             .write()
