@@ -1,7 +1,7 @@
 {
   "name": "manga-checklists-manager",
-  "version": "1.0.2",
-  "description": "A Vue.js project",
+  "version": "1.0.3",
+  "description": "Simple tool to help people to collaborate with the project.",
   "author": "Alessandro Jean <manga.checklists@gmail.com>",
   "private": true,
   "scripts": {
@@ -16,7 +16,6 @@
     "bootstrap-vue": "^1.4.0",
     "file-saver": "^1.3.3",
     "jszip": "^3.1.5",
-    "lodash": "^4.17.4",
     "lowdb": "^1.0.0",
     "shortid": "^2.2.8",
     "vue": "^2.5.2",

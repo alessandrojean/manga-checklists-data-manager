@@ -31,5 +31,44 @@ export default {
   },
   getActualDateForUpdatedAt () {
     return new Intl.DateTimeFormat('pt-BR', this.options).format(new Date())
+  },
+  isDigitalEditionValid (digitalEdition) {
+    if (digitalEdition !== undefined) {
+      const isValid = (
+        digitalEdition.format !== '' ||
+        digitalEdition.price !== 0 ||
+        digitalEdition.available_at !== '' ||
+        digitalEdition.isbn_epub !== '' ||
+        digitalEdition.isbn_mobi !== ''
+      )
+
+      return isValid
+    }
+
+    return false
+  },
+  defaultManga: {
+    id: '',
+    publisher: {
+      code: 1,
+      name: 'Editora JBC',
+      label: ''
+    },
+    name: '',
+    date: '',
+    subtitle: '',
+    synopsis: '',
+    volume: -1,
+    authors: '',
+    page_number: 0,
+    age_rating: 'Livre',
+    paper_edition: {
+      format: '',
+      price: 0,
+      isbn: ''
+    },
+    cover_url: '',
+    header_url: '',
+    url: ''
   }
 }

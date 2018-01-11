@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Landing from '@/components/Landing'
 import Checklists from '@/components/Checklists'
 import Manga from '@/components/Manga'
+import MangaList from '@/components/Manga/MangaList'
+import MangaFormNew from '@/components/Manga/MangaFormNew'
 import Export from '@/components/Export'
 import ExportForm from '@/components/Export/ExportForm'
 import ExportSuccess from '@/components/Export/ExportSuccess'
@@ -23,8 +25,24 @@ export default new Router({
     },
     {
       path: '/checklists/:dateShort/mangas',
-      name: 'Manga',
-      component: Manga
+      component: Manga,
+      children: [
+        {
+          path: '',
+          name: 'Manga',
+          component: MangaList
+        },
+        {
+          path: 'new',
+          name: 'MangaFormNew',
+          component: MangaFormNew
+        },
+        {
+          path: ':id/edit',
+          name: 'MangaFormEdit',
+          component: MangaFormNew
+        }
+      ]
     },
     {
       path: '/export',

@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <b-table striped hover small :items="mangas"
+    <b-table striped hover small :items="checklist.mangas"
        :fields="fields" @row-clicked="rowClicked" class="clickable"
        show-empty empty-text="Nenhum item cadastrado.">
       <template slot="publisher" slot-scope="data">
@@ -19,8 +19,15 @@
 <script>
   export default {
     name: 'manga-list',
+    created () {
+      // Get the specified checklist from the database.
+      this.fetchData()
+    },
     data () {
       return {
+        checklist: {
+          mangas: []
+        },
         fields: [
           {
             key: 'name',
@@ -42,17 +49,25 @@
       }
     },
     methods: {
+      fetchData () {
+        // Trick to reactivity work properly.
+        this.checklist = {}
+        // Get the specified checklist.
+        this.checklist = this.$database.db
+          .get('checklists')
+          .find({ dateShort: this.$route.params.dateShort })
+          .value()
+        // If checklist doesn't exist, redirect.
+        if (!this.checklist) {
+          this.$router.push({ name: 'Checklists' })
+        }
+      },
       rowClicked (item, index, event) {
-        this.$emit('row-clicked', JSON.parse(JSON.stringify(item)), index, event)
+        this.$router.push({ name: 'MangaFormEdit', params: { dateShort: this.$route.params.dateShort, id: item.id } })
       }
     },
-    props: {
-      mangas: {
-        type: Array,
-        default () {
-          return []
-        }
-      }
+    watch: {
+      '$route': 'fetchData'
     }
   }
 </script>
