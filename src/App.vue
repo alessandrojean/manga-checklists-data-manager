@@ -1,23 +1,32 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <app-sidebar>
+      <router-view></router-view>
+    </app-sidebar>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
+  import AppSidebar from './components/AppSidebar'
+
+  export default {
+    name: 'app',
+    components: { AppSidebar }
+  }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  html {
+    height: 100%;
+  }
+
+  #app {
+    height: 100%;
+  }
+
+  h4.dashboard, h5.dashboard {
+    padding-bottom: 9px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+  }
 </style>
