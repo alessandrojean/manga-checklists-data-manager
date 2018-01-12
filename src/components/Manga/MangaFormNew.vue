@@ -274,7 +274,7 @@
         this.$http.get('https://alessandrojean.github.io/manga-checklists-data/publishers/publishers.json')
           .then(response => {
             this.publishers = response.data.br
-            this.labels = this.publishers[0].publishing_labels
+            this.labels = this.publishers[this.manga.publisher.code - 1].publishing_labels
           })
           .catch(e => console.error(e))
       },
