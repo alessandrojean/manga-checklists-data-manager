@@ -61,7 +61,7 @@
     methods: {
       createZip () {
         // Set actual date.
-        this.created = checklistHelper.getActualDateForUpdatedAt()
+        this.exportation.created = checklistHelper.getActualDateForUpdatedAt()
         // Create a file.
         const zip = new JSZip()
         // Add the information from the sender.

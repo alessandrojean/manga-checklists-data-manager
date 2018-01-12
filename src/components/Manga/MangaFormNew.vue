@@ -159,21 +159,27 @@
         <b-col md="12">
           <b-form-group id="field-set-manga-url" label="URL" label-for="manga-url"
             description="Utilize apenas links para o site ou loja oficial da editora, caso aplicável.">
-            <b-form-input id="manga-url" v-model="manga.url" type="url"></b-form-input>
+            <b-input-group>
+              <b-form-input id="manga-url" v-model="manga.url" type="url"></b-form-input>
+              <b-input-group-button>
+                <b-button @click="getInformation" :disabled="loading || !isAvailable">Pegar informações</b-button>
+              </b-input-group-button>
+              
+            </b-input-group>
           </b-form-group>
         </b-col>
       </b-form-row>
 
       <div class="d-flex w-100 justify-content-between">
         <div>
-          <b-button v-if="$route.params.id" variant="danger" @click="onDelete">Deletar</b-button>
+          <b-button v-if="$route.params.id" variant="danger" @click="onDelete" :disabled="loading">Deletar</b-button>
         </div>
         <div>
           <b-button :to="{ name: 'Manga', params: { dateShort: this.$route.params.dateShort } }"
             active-class="">
             Cancelar
           </b-button>
-          <b-button type="submit" variant="primary">Salvar</b-button>
+          <b-button type="submit" variant="primary" :disabled="loading">Salvar</b-button>
         </div>
       </div>
     </b-form>
@@ -183,6 +189,7 @@
 <script>
   import shortid from 'shortid'
   import checklistHelper from '../../checklist-helper'
+  import parser from '../../parsers/parser'
 
   export default {
     name: 'MangaFormNew',
@@ -199,6 +206,9 @@
       },
       haveSynopsis () {
         return this.manga.synopsis !== ''
+      },
+      isAvailable () {
+        return parser.isAvailable(this.manga.url)
       }
     },
     created () {
@@ -211,6 +221,7 @@
     },
     data () {
       return {
+        loading: false,
         haveDigitalEdition: false,
         digitalEdition: {
           format: '',
@@ -219,7 +230,7 @@
           isbn_epub: '',
           isbn_mobi: ''
         },
-        manga: checklistHelper.defaultManga,
+        manga: checklistHelper.defaultManga(),
         publishers: [],
         labels: [],
         ageRatings: [
@@ -266,6 +277,30 @@
             this.labels = this.publishers[0].publishing_labels
           })
           .catch(e => console.error(e))
+      },
+      getInformation () {
+        const self = this
+        self.loading = true
+
+        this.$http.get(this.manga.url)
+          .then(response => {
+            parser.parse(self.manga, response.data, function (err) {
+              if (err) console.log(err)
+              // Disable loading state.
+              self.loading = false
+              // If have digital edition.
+              if (self.manga.digital_edition) {
+                self.digitalEdition = self.manga.digital_edition
+                self.haveDigitalEdition = true
+                // Remove from manga to avoid conflict.
+                delete self.manga.digital_edition
+              }
+            })
+          })
+          .catch(e => {
+            console.error(e)
+            self.loading = false
+          })
       },
       insertManga () {
         // Insert in the database.
@@ -383,3 +418,10 @@
     }
   }
 </script>
+
+<style>
+  .card-text p:last-of-type {
+    margin-bottom: 0;
+  }
+</style>
+

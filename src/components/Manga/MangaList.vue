@@ -82,4 +82,9 @@
   main .table.clickable tr {
     cursor: pointer;
   }
+
+  main .table.clickable tr.b-table-empty-row,
+  main .table.clickable thead tr {
+    cursor: default;
+  }
 </style>

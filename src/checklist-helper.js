@@ -47,28 +47,30 @@ export default {
 
     return false
   },
-  defaultManga: {
-    id: '',
-    publisher: {
-      code: 1,
-      name: 'Editora JBC',
-      label: ''
-    },
-    name: '',
-    date: '',
-    subtitle: '',
-    synopsis: '',
-    volume: -1,
-    authors: '',
-    page_number: 0,
-    age_rating: 'Livre',
-    paper_edition: {
-      format: '',
-      price: 0,
-      isbn: ''
-    },
-    cover_url: '',
-    header_url: '',
-    url: ''
+  defaultManga () {
+    return {
+      id: '',
+      publisher: {
+        code: 1,
+        name: 'Editora JBC',
+        label: ''
+      },
+      name: '',
+      date: '',
+      subtitle: '',
+      synopsis: '',
+      volume: -1,
+      authors: '',
+      page_number: 0,
+      age_rating: 'Livre',
+      paper_edition: {
+        format: '',
+        price: 0,
+        isbn: ''
+      },
+      cover_url: '',
+      header_url: '',
+      url: ''
+    }
   }
 }
