@@ -11,7 +11,6 @@
         <b-navbar-nav class="d-block d-sm-none">
           <b-nav-item to="/" active-class="">Início</b-nav-item>
           <b-nav-item to="/checklists">Checklists</b-nav-item>
-          <b-nav-item>Comparador</b-nav-item>
           <b-nav-item to="/export">Exportar</b-nav-item>
         </b-navbar-nav>
 

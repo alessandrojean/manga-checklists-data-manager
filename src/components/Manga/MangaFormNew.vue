@@ -319,7 +319,7 @@
         this.$database.db
           .get('checklists')
           .find({ dateShort: this.$route.params.dateShort })
-          .set('updated_at', checklistHelper.getActualDateForUpdatedAt())
+          .set('updatedAt', checklistHelper.getActualDateForUpdatedAt())
           .write()
       },
       onChange (value) {

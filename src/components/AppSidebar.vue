@@ -8,7 +8,6 @@
         <div class="nav-wrapper">
           <b-nav pills class="flex-column">
             <b-nav-item to="/checklists">Checklists</b-nav-item>
-            <b-nav-item>Comparador</b-nav-item>
             <b-nav-item to="/export">Exportar</b-nav-item>
           </b-nav>
           

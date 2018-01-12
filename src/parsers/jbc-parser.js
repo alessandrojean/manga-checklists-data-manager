@@ -47,7 +47,7 @@ export default {
     manga.digital_edition.format = digitalEdition.eq(0).text()
     // Parse the price.
     const digitalEditionPrice = digitalEdition.eq(1).text()
-    manga.digital_edition.price = parseFloat(digitalEditionPrice.replace(/R\$ (\d+)(,|\.)(\d+)/, '$1.$3'))
+    manga.digital_edition.price = parseFloat(digitalEditionPrice.replace(/R\$(?: )?(\d+)(?:,|\.)(\d+)/, '$1.$2'))
     // Parse the available at.
     manga.digital_edition.available_at = digitalEdition.eq(2).text().replace(' e ', ', ')
     // Parse the ISBN [.epub]
@@ -78,7 +78,7 @@ export default {
     manga.paper_edition.format = paperEdition.eq(0).text()
     // Parse the price.
     const paperEditionPrice = paperEdition.eq(1).text()
-    manga.paper_edition.price = parseFloat(paperEditionPrice.replace(/R\$ (\d+)(,|\.)(\d+)/, '$1.$3'))
+    manga.paper_edition.price = parseFloat(paperEditionPrice.replace(/R\$(?: )?(\d+)(?:,|\.)(\d+)/, '$1.$2'))
     // Parse the ISBN.
     manga.paper_edition.isbn = paperEdition.eq(2).text().replace(/-/g, '')
   }

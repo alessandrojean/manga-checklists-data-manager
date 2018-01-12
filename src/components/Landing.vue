@@ -37,7 +37,7 @@
         </p>
         <h4 class="dashboard">Sessões</h4>
         <p class="card-text text-justify">
-          Esta página é composta de três sessões inicialmente.
+          Esta página é composta de duas sessões inicialmente.
         </p>
         <h5>Checklists</h5>
         <p class="card-text text-justify">
@@ -46,11 +46,6 @@
           <a href="https://alessandrojean.github.io/manga-checklists-data/informacoes.html" target="_blank">sites recomendados</a>
           e digitar, ou copiar, as informações, uma a uma, nos campos. Porém, 
           essa sessão será automatizada futuramente.
-        </p>
-        <h5>Comparador</h5>
-        <p class="card-text text-justify">
-          Aqui você pode comparar as informações de um arquivo já gerado
-          com os já cadastrados no banco de dados do aplicativo.
         </p>
         <h5>Exportar</h5>
         <p class="card-text text-justify">

@@ -2,7 +2,7 @@
   <div class="h-100">
     <app-header title="Checklists">
       <b-navbar-nav>
-        <b-btn variant="primary" v-b-modal.modal-date>Novo</b-btn>
+        <b-btn variant="primary" v-b-modal.modal-date size="sm">Novo</b-btn>
       </b-navbar-nav>
     </app-header>
     <main role="main">
@@ -88,7 +88,7 @@
               dateFormatted: dateFormatted,
               dateShort: dateShort,
               mangas: [],
-              updated_at: checklistHelper.getActualDateForUpdatedAt()
+              updatedAt: checklistHelper.getActualDateForUpdatedAt()
             })
             .write()
           this.fetchData()

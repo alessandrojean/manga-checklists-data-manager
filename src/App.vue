@@ -24,7 +24,7 @@
     height: 100%;
   }
 
-  h4.dashboard, h5.dashboard {
+  .dashboard {
     padding-bottom: 9px;
     margin-bottom: 20px;
     border-bottom: 1px solid #eee;
