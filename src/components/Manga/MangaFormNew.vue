@@ -350,7 +350,6 @@
         this.$router.push({ name: 'Manga', params: { dateShort: this.$route.params.dateShort } })
       },
       onSubmit (event) {
-        console.log(this.manga)
         event.preventDefault()
         // Check if needs to remove digital edition.
         if (this.haveDigitalEdition && checklistHelper.isDigitalEditionValid(this.digitalEdition)) {
