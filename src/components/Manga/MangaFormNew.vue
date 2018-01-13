@@ -28,7 +28,7 @@
         <b-col md="8">
           <b-form-group id="field-set-manga-subtitle" label="Subtítulo" label-for="manga-subtitle"
             description="Utilize o subtítulo do volume, se aplicável.">
-            <b-form-input id="manga-subtitle" v-model="manga.subtitle"></b-form-input>
+            <b-form-input id="manga-subtitle" v-model.trim="manga.subtitle"></b-form-input>
           </b-form-group>
         </b-col>
         <b-col md="4">
@@ -41,7 +41,7 @@
         <b-col md="12">
           <b-form-group id="field-set-manga-synopsis" label="Sinopse" label-for="manga-synopsis"
             description="Lembre-se de formatar corretamente.">
-            <b-form-textarea id="manga-synopsis" v-model="manga.synopsis" rows="5"></b-form-textarea>
+            <b-form-textarea id="manga-synopsis" v-model.trim="manga.synopsis" rows="5"></b-form-textarea>
           </b-form-group>
         </b-col>
       </b-form-row>
@@ -57,19 +57,19 @@
         <b-col md="12">
           <b-form-group id="field-set-manga-authors" label="Autor(es)" label-for="manga-authors"
             description="Para múltiplos autores, separe-os por vírgula e espaço.">
-            <b-form-input id="manga-authors" v-model="manga.authors" type="text" required></b-form-input>
+            <b-form-input id="manga-authors" v-model.trim="manga.authors" type="text" required></b-form-input>
           </b-form-group>
         </b-col>
       </b-form-row>
       <b-form-row>
         <b-col md="4">
           <b-form-group id="field-set-manga-volume" label="Volume" label-for="manga-volume">
-            <b-form-input id="manga-volume" v-model="manga.volume" type="number"></b-form-input>
+            <b-form-input id="manga-volume" v-model.number="manga.volume" type="number"></b-form-input>
           </b-form-group>
         </b-col>
         <b-col md="4">
           <b-form-group id="field-set-manga-page-number" label="Número de páginas" label-for="manga-page-number">
-            <b-form-input id="manga-page-number" v-model="manga.page_number" type="number"></b-form-input>
+            <b-form-input id="manga-page-number" v-model.number="manga.page_number" type="number"></b-form-input>
           </b-form-group>
         </b-col>
         <b-col md="4">
@@ -88,19 +88,19 @@
       <b-form-row>
         <b-col md="4">
           <b-form-group id="field-set-manga-paper-format" label="Formato" label-for="manga-paper-format">
-            <b-form-input id="manga-paper-format" v-model="manga.paper_edition.format" type="text" required></b-form-input>
+            <b-form-input id="manga-paper-format" v-model.trim="manga.paper_edition.format" type="text" required></b-form-input>
           </b-form-group>
         </b-col>
         <b-col md="4">
           <b-form-group id="field-set-manga-paper-price" label="Preço" label-for="manga-paper-price"
             description="Utilize sempre o preço de capa.">
-            <b-form-input id="manga-paper-price" v-model="manga.paper_edition.price" type="number" step="0.1" required></b-form-input>
+            <b-form-input id="manga-paper-price" v-model.number="manga.paper_edition.price" type="number" step="0.1" required></b-form-input>
           </b-form-group>
         </b-col>
         <b-col md="4">
           <b-form-group id="field-set-manga-paper-isbn" label="ISBN" label-for="manga-paper-isbn"
             description="Utilize o código de barras caso não se aplique.">
-            <b-form-input id="manga-paper-isbn" v-model="manga.paper_edition.isbn" type="text"></b-form-input>
+            <b-form-input id="manga-paper-isbn" v-model.trim="manga.paper_edition.isbn" type="text"></b-form-input>
           </b-form-group>
         </b-col>
       </b-form-row>
@@ -110,13 +110,13 @@
         <b-form-row>
           <b-col md="4">
             <b-form-group id="field-set-manga-digital-format" label="Formato" label-for="manga-digital-format">
-              <b-form-input id="manga-digital-format" v-model="digitalEdition.format" type="text" 
+              <b-form-input id="manga-digital-format" v-model.trim="digitalEdition.format" type="text" 
                  :required="haveDigitalEdition"></b-form-input>
             </b-form-group>
           </b-col>
           <b-col md="8">
             <b-form-group id="field-set-manga-digital-available-at" label="Disponível nas lojas" label-for="manga-digital-available-at">
-              <b-form-input id="manga-digital-available-at" v-model="digitalEdition.available_at" type="text" 
+              <b-form-input id="manga-digital-available-at" v-model.trim="digitalEdition.available_at" type="text" 
                  :required="haveDigitalEdition"></b-form-input>
             </b-form-group>
           </b-col>
@@ -124,18 +124,18 @@
         <b-form-row>
           <b-col md="4">
             <b-form-group id="field-set-manga-digital-price" label="Preço" label-for="manga-digital-price">
-              <b-form-input id="manga-digital-price" v-model="digitalEdition.price" type="number" step="0.1" 
+              <b-form-input id="manga-digital-price" v-model.number="digitalEdition.price" type="number" step="0.1" 
                  :required="haveDigitalEdition"></b-form-input>
             </b-form-group>
           </b-col>
           <b-col md="4">
             <b-form-group id="field-set-manga-digital-isbn-epub" label="ISBN [.epub]" label-for="manga-digital-isbn-epub">
-              <b-form-input id="manga-digital-isbn-epub" v-model="digitalEdition.isbn_epub" type="text"></b-form-input>
+              <b-form-input id="manga-digital-isbn-epub" v-model.trim="digitalEdition.isbn_epub" type="text"></b-form-input>
             </b-form-group>
           </b-col>
           <b-col md="4">
             <b-form-group id="field-set-manga-digital-isbn-mobi" label="ISBN [.mobi]" label-for="manga-digital-isbn-mobi">
-              <b-form-input id="manga-digital-isbn-mobi" v-model="digitalEdition.isbn_mobi" type="text"></b-form-input>
+              <b-form-input id="manga-digital-isbn-mobi" v-model.trim="digitalEdition.isbn_mobi" type="text"></b-form-input>
             </b-form-group>
           </b-col>
         </b-form-row>
@@ -146,12 +146,12 @@
         <b-col md="6">
           <b-form-group id="field-set-manga-cover" label="Capa" label-for="manga-cover"
             description="Utilize imagens com pelo menos 400px de altura.">
-            <b-form-input id="manga-cover" v-model="manga.cover_url" type="url"></b-form-input>
+            <b-form-input id="manga-cover" v-model.trim="manga.cover_url" type="url"></b-form-input>
           </b-form-group>
         </b-col>
         <b-col md="6">
           <b-form-group id="field-set-manga-header" label="Cabeçalho" label-for="manga-header">
-            <b-form-input id="manga-header" v-model="manga.header_url" type="url"></b-form-input>
+            <b-form-input id="manga-header" v-model.trim="manga.header_url" type="url"></b-form-input>
           </b-form-group>
         </b-col>
       </b-form-row>
@@ -160,7 +160,7 @@
           <b-form-group id="field-set-manga-url" label="URL" label-for="manga-url"
             description="Utilize apenas links para o site ou loja oficial da editora, caso aplicável.">
             <b-input-group>
-              <b-form-input id="manga-url" v-model="manga.url" type="url"></b-form-input>
+              <b-form-input id="manga-url" v-model.trim="manga.url" type="url"></b-form-input>
               <b-input-group-button>
                 <b-button @click="getInformation" :disabled="loading || !isAvailable">Pegar informações</b-button>
               </b-input-group-button>
@@ -350,12 +350,22 @@
         this.$router.push({ name: 'Manga', params: { dateShort: this.$route.params.dateShort } })
       },
       onSubmit (event) {
+        console.log(this.manga)
         event.preventDefault()
         // Check if needs to remove digital edition.
         if (this.haveDigitalEdition && checklistHelper.isDigitalEditionValid(this.digitalEdition)) {
           this.manga.digital_edition = this.digitalEdition
+          // Remove the - from the isbn.
+          this.manga.digital_edition.isbn_epub = this.manga.digital_edition.isbn_epub.replace(/-/g, '')
+          this.manga.digital_edition.isbn_mobi = this.manga.digital_edition.isbn_mobi.replace(/-/g, '')
         } else {
           delete this.manga.digital_edition
+        }
+        // Remove the - from isbn.
+        this.manga.paper_edition.isbn = this.manga.paper_edition.isbn.replace(/-/g, '')
+        // If manga doesn't have header, fill with the cover.
+        if (!this.manga.header_url) {
+          this.manga.header_url = this.manga.cover_url
         }
         // Generate the id if it's a new manga.
         if (!this.manga.id) {
